@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StreamIes.SeriesSearcher;
 
 namespace StreamIes
 {
@@ -35,7 +36,21 @@ namespace StreamIes
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            
+            this.processSearch(searchQueryBox.Text);
+        }
+
+        private void searchQueryBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.processSearch(searchQueryBox.Text);
+            }
+        }
+
+        private void processSearch(String query)
+        {
+            Searcher seriesSearcher = new Searcher();
+            seriesSearcher.SearchShowsByQuery(searchQueryBox.Text);
         }
     }
 }

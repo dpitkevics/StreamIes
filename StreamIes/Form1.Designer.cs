@@ -38,6 +38,7 @@
             // 
             // searchQueryBox
             // 
+            this.searchQueryBox.AcceptsReturn = true;
             this.searchQueryBox.BackColor = System.Drawing.SystemColors.Highlight;
             this.searchQueryBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.searchQueryBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
@@ -49,6 +50,7 @@
             this.searchQueryBox.TabIndex = 0;
             this.searchQueryBox.Text = "Search...";
             this.searchQueryBox.Enter += new System.EventHandler(this.searchQueryBox_Enter);
+            this.searchQueryBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchQueryBox_KeyDown);
             this.searchQueryBox.Leave += new System.EventHandler(this.searchQueryBox_Leave);
             // 
             // pictureBox1
