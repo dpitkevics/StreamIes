@@ -14,11 +14,19 @@ namespace StreamIes
 {
     public partial class MainForm : Form
     {
-        SearchListLayout searchListLayout;
+        private SearchListLayout searchListLayout;
+        private Loader loader;
+
+        // For window dragging
+        private Boolean dragging = false;
+        private Point dragCursorPoint;
+        private Point dragFormPoint;
 
         public MainForm()
         {
             InitializeComponent();
+
+            this.loader = new Loader();
         }
 
         delegate void AddSearchListControlCallback(Results results);
@@ -54,6 +62,8 @@ namespace StreamIes
 
         private void processSearch(String query)
         {
+            this.Controls.Add(this.loader);
+
             if (this.searchListLayout != null)
             {
                 this.Controls.Remove(this.searchListLayout);
@@ -89,38 +99,53 @@ namespace StreamIes
                 for (int i = 0; i < result.showList.Count; i++)
                 {
                     Show show = result.showList[i];
-                    this.addSearchListControlItem(show, i);
+                    this.addSearchListControlItem(show);
                 }
                 this.Controls.Add(searchListLayout);
+
+                this.Controls.Remove(this.loader);
             }
         }
 
-        private void addSearchListControlItem(Show show, int row)
+        private void addSearchListControlItem(Show show)
         {
-            SearchList searchList = new SearchList();
-
-            PictureBox showLogo = new PictureBox();
-            showLogo.Load(show.imageUrl);
-            searchList.layout.Controls.Add(showLogo, 0, 0);
-
-            Label showTitle = new Label();
-            showTitle.Text = show.name;
-            searchList.layoutDetails.Controls.Add(showTitle, 1, 0);
-
-            Label showSeasons = new Label();
-            showSeasons.Text = String.Format("Seasons: {0}", show.seasons);
-            searchList.layoutDetails.Controls.Add(showSeasons, 1, 1);
-
-            Label showGenres = new Label();
-            String[] genreLabels = new String[show.genres.Count];
-            for (int i = 0; i < show.genres.Count; i++)
-            {
-                genreLabels[i] = show.genres[i].title;
-            }
-            showGenres.Text = String.Join(", ", genreLabels);
-            searchList.layoutDetails.Controls.Add(showGenres, 1, 2);
+            SearchList searchList = new SearchList(show);
 
             this.searchListLayout.layout.Controls.Add(searchList);
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dragPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.dragging = true;
+            this.dragCursorPoint = Cursor.Position;
+            this.dragFormPoint = this.Location;
+        }
+
+        private void dragPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (this.dragging)
+            {
+                Point dif = Point.Subtract(Cursor.Position, new Size(this.dragCursorPoint));
+                this.Location = Point.Add(this.dragFormPoint, new Size(dif));
+            }
+        }
+
+        private void dragPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.dragging = false;
+        }
+
+        private void searchQueryPanel_Paint(object sender, PaintEventArgs e)
+        {
+            System.Drawing.Drawing2D.GraphicsPath myGraphicsPath = new System.Drawing.Drawing2D.GraphicsPath(System.Drawing.Drawing2D.FillMode.Winding); 
+            myGraphicsPath.AddEllipse(new Rectangle(707, 0, 44, 44));
+            myGraphicsPath.AddRectangle(new Rectangle(0, 0, 733, 44));
+            this.searchQueryPanel.Region = new Region(myGraphicsPath);
         }
     }
 }
