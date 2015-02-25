@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 using StreamIes.SeriesSearcher;
 
 namespace StreamIes
@@ -49,8 +50,16 @@ namespace StreamIes
 
         private void processSearch(String query)
         {
-            Searcher seriesSearcher = new Searcher();
-            seriesSearcher.SearchShowsByQuery(searchQueryBox.Text);
+            Searcher seriesSearcher = new Searcher(this.processSearchCallback);
+            Thread seriesSearcherThread = new Thread(() => seriesSearcher.SearchShowsByQuery(searchQueryBox.Text));
+            seriesSearcherThread.Start();
+        }
+
+        private int processSearchCallback()
+        {
+            Console.WriteLine("search finished");
+
+            return 1;
         }
     }
 }
