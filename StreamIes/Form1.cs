@@ -19,6 +19,8 @@ namespace StreamIes
             InitializeComponent();
         }
 
+        delegate void AddSearchListControlCallback(Show show);
+
         private void searchQueryBox_Enter(object sender, EventArgs e)
         {
             if (searchQueryBox.Text.Equals("Search..."))
@@ -57,9 +59,26 @@ namespace StreamIes
 
         private int processSearchCallback(Results results)
         {
-            Console.WriteLine("callback processed");
+            this.addSearchListControl(results.showList[0]);
 
             return 1;
+        }
+
+        private void addSearchListControl(Show show)
+        {
+            if (this.InvokeRequired)
+            {
+                AddSearchListControlCallback d = new AddSearchListControlCallback(addSearchListControl);
+                this.Invoke(d, new object[] { show });
+            }
+            else
+            {
+                SearchList searchList = new SearchList();
+                searchList.Location = new Point(0, 400);
+                searchList.showLogo.Load("http://www.newssetup.com/wp-content/uploads/2014/10/Google-Logo-3.jpg");
+
+                this.Controls.Add(searchList);
+            }
         }
     }
 }
