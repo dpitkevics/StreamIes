@@ -55,9 +55,9 @@ namespace StreamIes
             seriesSearcherThread.Start();
         }
 
-        private int processSearchCallback()
+        private int processSearchCallback(Results results)
         {
-            Console.WriteLine("search finished");
+            Console.WriteLine("callback processed");
 
             return 1;
         }
