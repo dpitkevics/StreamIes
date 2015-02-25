@@ -14,12 +14,14 @@ namespace StreamIes
 {
     public partial class MainForm : Form
     {
+        SearchListLayout searchListLayout;
+
         public MainForm()
         {
             InitializeComponent();
         }
 
-        delegate void AddSearchListControlCallback(Show show);
+        delegate void AddSearchListControlCallback(Results results);
 
         private void searchQueryBox_Enter(object sender, EventArgs e)
         {
@@ -52,6 +54,13 @@ namespace StreamIes
 
         private void processSearch(String query)
         {
+            if (this.searchListLayout != null)
+            {
+                this.Controls.Remove(this.searchListLayout);
+            }
+
+            this.searchListLayout = new SearchListLayout();
+
             Searcher seriesSearcher = new Searcher(this.processSearchCallback);
             Thread seriesSearcherThread = new Thread(() => seriesSearcher.SearchShowsByQuery(searchQueryBox.Text));
             seriesSearcherThread.Start();
@@ -59,26 +68,59 @@ namespace StreamIes
 
         private int processSearchCallback(Results results)
         {
-            this.addSearchListControl(results.showList[0]);
+            this.addSearchListControl(results);
 
             return 1;
         }
 
-        private void addSearchListControl(Show show)
+        private void addSearchListControl(Results result)
         {
             if (this.InvokeRequired)
             {
                 AddSearchListControlCallback d = new AddSearchListControlCallback(addSearchListControl);
-                this.Invoke(d, new object[] { show });
+                this.Invoke(d, new object[] { result });
             }
             else
             {
-                SearchList searchList = new SearchList();
-                searchList.Location = new Point(0, 400);
-                searchList.showLogo.Load("http://www.newssetup.com/wp-content/uploads/2014/10/Google-Logo-3.jpg");
+                this.searchListLayout.Location = new Point(0, 200);
+                this.searchListLayout.Height = result.showList.Count * 100;
+                this.searchListLayout.layout.Height = result.showList.Count * 100;
 
-                this.Controls.Add(searchList);
+                for (int i = 0; i < result.showList.Count; i++)
+                {
+                    Show show = result.showList[i];
+                    this.addSearchListControlItem(show, i);
+                }
+                this.Controls.Add(searchListLayout);
             }
+        }
+
+        private void addSearchListControlItem(Show show, int row)
+        {
+            SearchList searchList = new SearchList();
+
+            PictureBox showLogo = new PictureBox();
+            showLogo.Load(show.imageUrl);
+            searchList.layout.Controls.Add(showLogo, 0, 0);
+
+            Label showTitle = new Label();
+            showTitle.Text = show.name;
+            searchList.layoutDetails.Controls.Add(showTitle, 1, 0);
+
+            Label showSeasons = new Label();
+            showSeasons.Text = String.Format("Seasons: {0}", show.seasons);
+            searchList.layoutDetails.Controls.Add(showSeasons, 1, 1);
+
+            Label showGenres = new Label();
+            String[] genreLabels = new String[show.genres.Count];
+            for (int i = 0; i < show.genres.Count; i++)
+            {
+                genreLabels[i] = show.genres[i].title;
+            }
+            showGenres.Text = String.Join(", ", genreLabels);
+            searchList.layoutDetails.Controls.Add(showGenres, 1, 2);
+
+            this.searchListLayout.layout.Controls.Add(searchList);
         }
     }
 }

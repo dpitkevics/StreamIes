@@ -61,6 +61,12 @@
     <Compile Include="SearchList.Designer.cs">
       <DependentUpon>SearchList.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchListLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchListLayout.Designer.cs">
+      <DependentUpon>SearchListLayout.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,6 +81,9 @@
     </Compile>
     <EmbeddedResource Include="SearchList.resx">
       <DependentUpon>SearchList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchListLayout.resx">
+      <DependentUpon>SearchListLayout.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -28,58 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.showLogo = new System.Windows.Forms.PictureBox();
-            this.showTitle = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.showLogo)).BeginInit();
+            this.layoutDetails = new System.Windows.Forms.TableLayoutPanel();
+            this.layout = new System.Windows.Forms.TableLayoutPanel();
+            this.layout.SuspendLayout();
             this.SuspendLayout();
             // 
-            // showLogo
+            // layoutDetails
             // 
-            this.showLogo.Location = new System.Drawing.Point(3, 3);
-            this.showLogo.Name = "showLogo";
-            this.showLogo.Size = new System.Drawing.Size(148, 84);
-            this.showLogo.TabIndex = 0;
-            this.showLogo.TabStop = false;
+            this.layoutDetails.ColumnCount = 1;
+            this.layoutDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutDetails.Location = new System.Drawing.Point(140, 3);
+            this.layoutDetails.Name = "layoutDetails";
+            this.layoutDetails.RowCount = 4;
+            this.layoutDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 58.49057F));
+            this.layoutDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.50943F));
+            this.layoutDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.layoutDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.layoutDetails.Size = new System.Drawing.Size(364, 88);
+            this.layoutDetails.TabIndex = 0;
             // 
-            // showTitle
+            // layout
             // 
-            this.showTitle.AutoSize = true;
-            this.showTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.showTitle.Location = new System.Drawing.Point(157, 3);
-            this.showTitle.Name = "showTitle";
-            this.showTitle.Size = new System.Drawing.Size(120, 26);
-            this.showTitle.TabIndex = 1;
-            this.showTitle.Text = "Homeland";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(162, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
+            this.layout.ColumnCount = 2;
+            this.layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.0217F));
+            this.layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.9783F));
+            this.layout.Controls.Add(this.layoutDetails, 1, 0);
+            this.layout.Location = new System.Drawing.Point(3, 3);
+            this.layout.Name = "layout";
+            this.layout.RowCount = 1;
+            this.layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layout.Size = new System.Drawing.Size(507, 94);
+            this.layout.TabIndex = 3;
             // 
             // SearchList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.showTitle);
-            this.Controls.Add(this.showLogo);
+            this.Controls.Add(this.layout);
             this.Name = "SearchList";
-            this.Size = new System.Drawing.Size(598, 90);
-            ((System.ComponentModel.ISupportInitialize)(this.showLogo)).EndInit();
+            this.Size = new System.Drawing.Size(515, 100);
+            this.layout.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label showTitle;
-        private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.PictureBox showLogo;
+        public System.Windows.Forms.TableLayoutPanel layout;
+        public System.Windows.Forms.TableLayoutPanel layoutDetails;
+
     }
 }
