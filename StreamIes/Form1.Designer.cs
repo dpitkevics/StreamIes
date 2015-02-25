@@ -117,7 +117,7 @@
             // 
             this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.searchButton.Image = global::StreamIes.Properties.Resources.Search_icon;
-            this.searchButton.Location = new System.Drawing.Point(713, 5);
+            this.searchButton.Location = new System.Drawing.Point(713, 7);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(35, 38);
             this.searchButton.TabIndex = 7;

@@ -37,6 +37,9 @@ namespace StreamIes
             {
                 searchQueryBox.Text = "";
             }
+
+            searchQueryBox.BackColor = Color.White;
+            searchQueryPanel.BackColor = Color.White;
         }
 
         private void searchQueryBox_Leave(object sender, EventArgs e)
@@ -57,11 +60,18 @@ namespace StreamIes
             if (e.KeyCode == Keys.Enter)
             {
                 this.processSearch(searchQueryBox.Text);
+
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
 
         private void processSearch(String query)
         {
+            this.ActiveControl = null;
+            searchQueryBox.BackColor = Color.FromArgb(223, 224, 230);
+            searchQueryPanel.BackColor = Color.FromArgb(223, 224, 230);
+
             this.Controls.Add(this.loader);
 
             if (this.searchListLayout != null)
