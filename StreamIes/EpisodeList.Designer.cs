@@ -1,6 +1,6 @@
 ﻿namespace StreamIes
 {
-    partial class Loader
+    partial class EpisodeList
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,33 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.loaderIcon = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.loaderIcon)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // loaderIcon
+            // label1
             // 
-            this.loaderIcon.Image = global::StreamIes.Properties.Resources.tax_loader;
-            this.loaderIcon.Location = new System.Drawing.Point(502, 372);
-            this.loaderIcon.Name = "loaderIcon";
-            this.loaderIcon.Size = new System.Drawing.Size(63, 15);
-            this.loaderIcon.TabIndex = 0;
-            this.loaderIcon.TabStop = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(243, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "episode";
             // 
-            // Loader
+            // EpisodeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.loaderIcon);
-            this.Name = "Loader";
-            this.Size = new System.Drawing.Size(1096, 813);
-            ((System.ComponentModel.ISupportInitialize)(this.loaderIcon)).EndInit();
+            this.Controls.Add(this.label1);
+            this.Name = "EpisodeList";
+            this.Size = new System.Drawing.Size(856, 100);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox loaderIcon;
+        private System.Windows.Forms.Label label1;
     }
 }

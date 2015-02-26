@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace StreamIes
 {
-    public partial class Loader : UserControl
+    public partial class SeasonListLayout : UserControl
     {
-        public Loader()
+        public SeasonListLayout()
         {
             InitializeComponent();
         }

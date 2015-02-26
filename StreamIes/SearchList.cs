@@ -14,10 +14,12 @@ namespace StreamIes
     public partial class SearchList : UserControl
     {
         Show show;
+        Func<Show, int> callback;
 
-        public SearchList(Show show)
+        public SearchList(Show show, Func<Show, int> callback)
         {
             this.show = show;
+            this.callback = callback;
 
             InitializeComponent();
             this.InitDynamicComponenets();
@@ -25,26 +27,43 @@ namespace StreamIes
 
         public void InitDynamicComponenets()
         {
-            PictureBox showLogo = new PictureBox();
-            showLogo.Load(this.show.imageUrl);
-            this.layout.Controls.Add(showLogo, 0, 0);
+            this.logo.Load(this.show.imageUrl);
+            this.titleLabel.Text = this.show.name;
+            this.seasonsLabel.Text = String.Format("Seasons: {0}", this.show.seasons);
 
-            Label showTitle = new Label();
-            showTitle.Text = this.show.name;
-            this.layoutDetails.Controls.Add(showTitle, 1, 0);
-
-            Label showSeasons = new Label();
-            showSeasons.Text = String.Format("Seasons: {0}", this.show.seasons);
-            this.layoutDetails.Controls.Add(showSeasons, 1, 1);
-
-            Label showGenres = new Label();
             String[] genreLabels = new String[this.show.genres.Count];
             for (int i = 0; i < this.show.genres.Count; i++)
             {
                 genreLabels[i] = this.show.genres[i].title;
             }
-            showGenres.Text = String.Join(", ", genreLabels);
-            this.layoutDetails.Controls.Add(showGenres, 1, 2);
+            this.genresLabel.Text = String.Format("Genres: {0}", String.Join(", ", genreLabels));
+
+            this.isActiveLabel.Text = String.Format("Is Active: {0}", show.ended == 0 ? "Yes" : "No");
+        }
+
+        private void hoverPanel_MouseEnter(object sender, EventArgs e)
+        {
+            this.setHoverPanel();
+        }
+
+        private void hoverPanel_MouseLeave(object sender, EventArgs e)
+        {
+            this.removeHoverPanel();
+        }
+
+        private void setHoverPanel()
+        {
+            this.BackColor = Color.FromArgb(28, 28, 31);
+        }
+
+        private void removeHoverPanel()
+        {
+            this.BackColor = Color.Transparent;
+        }
+
+        private void panel_Click(object sender, EventArgs e)
+        {
+            this.callback(this.show);
         }
     }
 }

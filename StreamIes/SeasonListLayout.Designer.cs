@@ -1,6 +1,6 @@
 ﻿namespace StreamIes
 {
-    partial class Loader
+    partial class SeasonListLayout
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,33 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.loaderIcon = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.loaderIcon)).BeginInit();
+            this.seasonMainLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // loaderIcon
+            // seasonMainLayout
             // 
-            this.loaderIcon.Image = global::StreamIes.Properties.Resources.tax_loader;
-            this.loaderIcon.Location = new System.Drawing.Point(502, 372);
-            this.loaderIcon.Name = "loaderIcon";
-            this.loaderIcon.Size = new System.Drawing.Size(63, 15);
-            this.loaderIcon.TabIndex = 0;
-            this.loaderIcon.TabStop = false;
+            this.seasonMainLayout.Location = new System.Drawing.Point(0, 0);
+            this.seasonMainLayout.Name = "seasonMainLayout";
+            this.seasonMainLayout.Size = new System.Drawing.Size(856, 200);
+            this.seasonMainLayout.TabIndex = 0;
             // 
-            // Loader
+            // SeasonListLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.loaderIcon);
-            this.Name = "Loader";
-            this.Size = new System.Drawing.Size(1096, 813);
-            ((System.ComponentModel.ISupportInitialize)(this.loaderIcon)).EndInit();
+            this.Controls.Add(this.seasonMainLayout);
+            this.Name = "SeasonListLayout";
+            this.Size = new System.Drawing.Size(856, 200);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox loaderIcon;
+        public System.Windows.Forms.FlowLayoutPanel seasonMainLayout;
+
     }
 }

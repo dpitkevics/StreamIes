@@ -14,6 +14,8 @@ namespace StreamIes
 {
     public partial class MainForm : Form
     {
+        public const int SLI_HEIGHT = 110;
+
         private SearchListLayout searchListLayout;
         private Loader loader;
 
@@ -30,6 +32,7 @@ namespace StreamIes
         }
 
         delegate void AddSearchListControlCallback(Results results);
+        delegate int AddShowSelectControlCallback(Show show);
 
         private void searchQueryBox_Enter(object sender, EventArgs e)
         {
@@ -48,6 +51,9 @@ namespace StreamIes
             {
                 searchQueryBox.Text = "Search...";
             }
+
+            searchQueryBox.BackColor = Color.FromArgb(223, 224, 230);
+            searchQueryPanel.BackColor = Color.FromArgb(223, 224, 230);
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -69,19 +75,20 @@ namespace StreamIes
         private void processSearch(String query)
         {
             this.ActiveControl = null;
-            searchQueryBox.BackColor = Color.FromArgb(223, 224, 230);
-            searchQueryPanel.BackColor = Color.FromArgb(223, 224, 230);
 
             this.Controls.Add(this.loader);
 
             if (this.searchListLayout != null)
             {
-                this.Controls.Remove(this.searchListLayout);
+                this.contentPanel.Visible = false;
+                this.contentPanel.Controls.Remove(this.searchListLayout);
             }
 
             this.searchListLayout = new SearchListLayout();
 
-            Searcher seriesSearcher = new Searcher(this.processSearchCallback);
+            Searcher seriesSearcher = new Searcher();
+            seriesSearcher.callback = this.processSearchCallback;
+            
             Thread seriesSearcherThread = new Thread(() => seriesSearcher.SearchShowsByQuery(searchQueryBox.Text));
             seriesSearcherThread.Start();
         }
@@ -102,16 +109,18 @@ namespace StreamIes
             }
             else
             {
-                this.searchListLayout.Location = new Point(0, 200);
-                this.searchListLayout.Height = result.showList.Count * 100;
-                this.searchListLayout.layout.Height = result.showList.Count * 100;
+                this.searchListLayout.Location = new Point(0, 0);
+                this.searchListLayout.Height = result.showList.Count * SLI_HEIGHT;
+                this.searchListLayout.layout.Height = result.showList.Count * SLI_HEIGHT;
 
                 for (int i = 0; i < result.showList.Count; i++)
                 {
                     Show show = result.showList[i];
                     this.addSearchListControlItem(show);
                 }
-                this.Controls.Add(searchListLayout);
+                this.contentPanel.Controls.Add(this.searchListLayout);
+                this.contentPanel.Visible = true;
+                this.ActiveControl = this.contentPanel;
 
                 this.Controls.Remove(this.loader);
             }
@@ -119,7 +128,7 @@ namespace StreamIes
 
         private void addSearchListControlItem(Show show)
         {
-            SearchList searchList = new SearchList(show);
+            SearchList searchList = new SearchList(show, searchListItemClickCallback);
 
             this.searchListLayout.layout.Controls.Add(searchList);
         }
@@ -156,6 +165,57 @@ namespace StreamIes
             myGraphicsPath.AddEllipse(new Rectangle(707, 0, 44, 44));
             myGraphicsPath.AddRectangle(new Rectangle(0, 0, 733, 44));
             this.searchQueryPanel.Region = new Region(myGraphicsPath);
+        }
+
+        private void searchQueryPanel_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = searchQueryBox;
+        }
+
+        private int searchListItemClickCallback(Show show)
+        {
+            this.contentPanel.Visible = false;
+            this.contentPanel.Controls.Remove(this.searchListLayout);
+
+            this.Controls.Add(this.loader);
+
+            Searcher seriesSearcher = new Searcher();
+            seriesSearcher.callbackShow = this.processShowSelectCallback;
+
+            Thread seriesSearcherThread = new Thread(() => seriesSearcher.SearchShowDataById(show));
+            seriesSearcherThread.Start();
+
+            return 1;
+        }
+
+        private int processShowSelectCallback(Show show)
+        {
+            if (this.InvokeRequired)
+            {
+                AddShowSelectControlCallback d = new AddShowSelectControlCallback(processShowSelectCallback);
+                this.Invoke(d, new object[] { show });
+            }
+            else
+            {
+                SeasonListLayout seasonListLayout = new SeasonListLayout();
+                seasonListLayout.Location = new Point(0, 0);
+                seasonListLayout.Height = show.seasonsList.Count * SLI_HEIGHT;
+                seasonListLayout.seasonMainLayout.Height = show.seasonsList.Count * SLI_HEIGHT;
+
+                foreach (Season season in show.seasonsList)
+                {
+                    SeasonList seasonList = new SeasonList();
+
+                    seasonListLayout.Controls.Add(seasonList);
+                }
+
+                this.contentPanel.Controls.Add(seasonListLayout);
+                this.contentPanel.Visible = true;
+
+                this.Controls.Remove(this.loader);
+            }
+
+            return 1;
         }
     }
 }
