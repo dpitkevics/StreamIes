@@ -28,36 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.loaderIcon = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.loaderIcon)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // loaderIcon
             // 
-            this.pictureBox1.Image = global::StreamIes.Properties.Resources.tax_loader;
-            this.pictureBox1.Location = new System.Drawing.Point(523, 363);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(66, 15);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.loaderIcon.Image = global::StreamIes.Properties.Resources.tax_loader;
+            this.loaderIcon.Location = new System.Drawing.Point(502, 372);
+            this.loaderIcon.Name = "loaderIcon";
+            this.loaderIcon.Size = new System.Drawing.Size(63, 15);
+            this.loaderIcon.TabIndex = 0;
+            this.loaderIcon.TabStop = false;
             // 
             // Loader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.loaderIcon);
             this.Name = "Loader";
-            this.Size = new System.Drawing.Size(1112, 852);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Size = new System.Drawing.Size(1096, 813);
+            ((System.ComponentModel.ISupportInitialize)(this.loaderIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-
-
+        private System.Windows.Forms.PictureBox loaderIcon;
     }
 }

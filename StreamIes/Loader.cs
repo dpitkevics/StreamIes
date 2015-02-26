@@ -15,9 +15,6 @@ namespace StreamIes
         public Loader()
         {
             InitializeComponent();
-
-            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            this.BackColor = Color.Transparent;
         }
     }
 }
