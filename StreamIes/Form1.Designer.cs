@@ -31,16 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.searchQueryBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dragPanel = new System.Windows.Forms.Panel();
             this.searchQueryPanel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.closeButton = new System.Windows.Forms.PictureBox();
             this.searchButton = new System.Windows.Forms.PictureBox();
+            this.dragPanel = new System.Windows.Forms.Panel();
+            this.closeButton = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.contentPanel = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.searchQueryPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // searchQueryBox
@@ -48,12 +49,12 @@
             this.searchQueryBox.AcceptsReturn = true;
             this.searchQueryBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
             this.searchQueryBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.searchQueryBox.Font = new System.Drawing.Font("Tw Cen MT Condensed", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.searchQueryBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.searchQueryBox.ForeColor = System.Drawing.Color.Gray;
             this.searchQueryBox.Location = new System.Drawing.Point(3, 13);
             this.searchQueryBox.Margin = new System.Windows.Forms.Padding(10);
             this.searchQueryBox.Name = "searchQueryBox";
-            this.searchQueryBox.Size = new System.Drawing.Size(705, 16);
+            this.searchQueryBox.Size = new System.Drawing.Size(705, 17);
             this.searchQueryBox.TabIndex = 0;
             this.searchQueryBox.Text = "Search...";
             this.searchQueryBox.Enter += new System.EventHandler(this.searchQueryBox_Enter);
@@ -71,16 +72,6 @@
             this.panel2.Size = new System.Drawing.Size(1097, 149);
             this.panel2.TabIndex = 4;
             // 
-            // dragPanel
-            // 
-            this.dragPanel.Location = new System.Drawing.Point(0, 3);
-            this.dragPanel.Name = "dragPanel";
-            this.dragPanel.Size = new System.Drawing.Size(1046, 32);
-            this.dragPanel.TabIndex = 5;
-            this.dragPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseDown);
-            this.dragPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseMove);
-            this.dragPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseUp);
-            // 
             // searchQueryPanel
             // 
             this.searchQueryPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
@@ -91,27 +82,6 @@
             this.searchQueryPanel.Size = new System.Drawing.Size(751, 44);
             this.searchQueryPanel.TabIndex = 6;
             this.searchQueryPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.searchQueryPanel_Paint);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(31)))));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(137, 149);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // closeButton
-            // 
-            this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeButton.Image = global::StreamIes.Properties.Resources.close_white;
-            this.closeButton.Location = new System.Drawing.Point(1052, 3);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(33, 32);
-            this.closeButton.TabIndex = 4;
-            this.closeButton.TabStop = false;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // searchButton
             // 
@@ -124,6 +94,46 @@
             this.searchButton.TabStop = false;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
+            // dragPanel
+            // 
+            this.dragPanel.Location = new System.Drawing.Point(0, 3);
+            this.dragPanel.Name = "dragPanel";
+            this.dragPanel.Size = new System.Drawing.Size(1046, 32);
+            this.dragPanel.TabIndex = 5;
+            this.dragPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseDown);
+            this.dragPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseMove);
+            this.dragPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseUp);
+            // 
+            // closeButton
+            // 
+            this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeButton.Image = global::StreamIes.Properties.Resources.close_white;
+            this.closeButton.Location = new System.Drawing.Point(1052, 3);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(33, 32);
+            this.closeButton.TabIndex = 4;
+            this.closeButton.TabStop = false;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(31)))));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(137, 149);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // contentPanel
+            // 
+            this.contentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(19)))), ((int)(((byte)(20)))));
+            this.contentPanel.Location = new System.Drawing.Point(181, 154);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.Size = new System.Drawing.Size(915, 657);
+            this.contentPanel.TabIndex = 5;
+            this.contentPanel.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,15 +142,16 @@
             this.ClientSize = new System.Drawing.Size(1096, 813);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.contentPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.Text = "StreamIes";
             this.panel2.ResumeLayout(false);
             this.searchQueryPanel.ResumeLayout(false);
             this.searchQueryPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.closeButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closeButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -154,6 +165,7 @@
         private System.Windows.Forms.Panel dragPanel;
         private System.Windows.Forms.Panel searchQueryPanel;
         private System.Windows.Forms.PictureBox searchButton;
+        private System.Windows.Forms.Panel contentPanel;
     }
 }
 

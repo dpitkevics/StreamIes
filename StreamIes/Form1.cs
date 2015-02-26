@@ -48,6 +48,9 @@ namespace StreamIes
             {
                 searchQueryBox.Text = "Search...";
             }
+
+            searchQueryBox.BackColor = Color.FromArgb(223, 224, 230);
+            searchQueryPanel.BackColor = Color.FromArgb(223, 224, 230);
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -69,14 +72,13 @@ namespace StreamIes
         private void processSearch(String query)
         {
             this.ActiveControl = null;
-            searchQueryBox.BackColor = Color.FromArgb(223, 224, 230);
-            searchQueryPanel.BackColor = Color.FromArgb(223, 224, 230);
 
             this.Controls.Add(this.loader);
 
             if (this.searchListLayout != null)
             {
-                this.Controls.Remove(this.searchListLayout);
+                this.contentPanel.Visible = false;
+                this.contentPanel.Controls.Remove(this.searchListLayout);
             }
 
             this.searchListLayout = new SearchListLayout();
@@ -102,16 +104,18 @@ namespace StreamIes
             }
             else
             {
-                this.searchListLayout.Location = new Point(0, 200);
+                this.searchListLayout.Location = new Point(0, 0);
                 this.searchListLayout.Height = result.showList.Count * 100;
                 this.searchListLayout.layout.Height = result.showList.Count * 100;
 
                 for (int i = 0; i < result.showList.Count; i++)
                 {
                     Show show = result.showList[i];
+                    Console.WriteLine(show.name);
                     this.addSearchListControlItem(show);
                 }
-                this.Controls.Add(searchListLayout);
+                this.contentPanel.Controls.Add(this.searchListLayout);
+                this.contentPanel.Visible = true;
 
                 this.Controls.Remove(this.loader);
             }
