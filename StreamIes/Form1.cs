@@ -15,8 +15,11 @@ namespace StreamIes
     public partial class MainForm : Form
     {
         public const int SLI_HEIGHT = 110;
+        public const int EL_HEIGHT = 50;
+        public const int ST_HEIGHT = 20;
 
         private SearchListLayout searchListLayout;
+        private SeasonListLayout seasonListLayout;
         private Loader loader;
 
         // For window dragging
@@ -82,6 +85,12 @@ namespace StreamIes
             {
                 this.contentPanel.Visible = false;
                 this.contentPanel.Controls.Remove(this.searchListLayout);
+            }
+
+            if (this.seasonListLayout != null)
+            {
+                this.contentPanel.Visible = false;
+                this.contentPanel.Controls.Remove(this.seasonListLayout);
             }
 
             this.searchListLayout = new SearchListLayout();
@@ -199,18 +208,28 @@ namespace StreamIes
             {
                 SeasonListLayout seasonListLayout = new SeasonListLayout();
                 seasonListLayout.Location = new Point(0, 0);
-                seasonListLayout.Height = show.seasonsList.Count * SLI_HEIGHT;
-                seasonListLayout.seasonMainLayout.Height = show.seasonsList.Count * SLI_HEIGHT;
+                seasonListLayout.Height = (show.GetEpisodeCount() * EL_HEIGHT) + (show.seasonsList.Count * ST_HEIGHT);
+                seasonListLayout.seasonMainLayout.Height = (show.GetEpisodeCount() * EL_HEIGHT) + (show.seasonsList.Count * ST_HEIGHT);
 
                 foreach (Season season in show.seasonsList)
                 {
-                    SeasonList seasonList = new SeasonList();
+                    SeasonList seasonList = new SeasonList(season);
 
-                    seasonListLayout.Controls.Add(seasonList);
+                    foreach (Episode episode in season.episodes)
+                    {
+                        EpisodeList episodeList = new EpisodeList(episode);
+
+                        seasonList.seasonLayout.Controls.Add(episodeList);
+                    }
+
+                    seasonListLayout.seasonMainLayout.Controls.Add(seasonList);
                 }
 
-                this.contentPanel.Controls.Add(seasonListLayout);
+                this.seasonListLayout = seasonListLayout;
+
+                this.contentPanel.Controls.Add(this.seasonListLayout);
                 this.contentPanel.Visible = true;
+                this.ActiveControl = this.contentPanel;
 
                 this.Controls.Remove(this.loader);
             }

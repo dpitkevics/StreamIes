@@ -28,18 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.seasonLabel = new System.Windows.Forms.Label();
             this.seasonLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // label1
+            // seasonLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(219, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Season";
+            this.seasonLabel.AutoSize = true;
+            this.seasonLabel.Font = new System.Drawing.Font("Corbel", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.seasonLabel.ForeColor = System.Drawing.Color.White;
+            this.seasonLabel.Location = new System.Drawing.Point(3, 2);
+            this.seasonLabel.Name = "seasonLabel";
+            this.seasonLabel.Size = new System.Drawing.Size(87, 29);
+            this.seasonLabel.TabIndex = 0;
+            this.seasonLabel.Text = "Season";
             // 
             // seasonLayout
             // 
@@ -53,7 +55,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.seasonLayout);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.seasonLabel);
             this.Name = "SeasonList";
             this.Size = new System.Drawing.Size(856, 200);
             this.ResumeLayout(false);
@@ -63,7 +65,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.FlowLayoutPanel seasonLayout;
+        private System.Windows.Forms.Label seasonLabel;
+        public System.Windows.Forms.FlowLayoutPanel seasonLayout;
     }
 }
