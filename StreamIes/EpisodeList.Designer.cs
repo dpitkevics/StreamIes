@@ -1,6 +1,6 @@
 ﻿namespace StreamIes
 {
-    partial class SearchListLayout
+    partial class EpisodeList
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,35 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.layout = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // layout
+            // label1
             // 
-            this.layout.Location = new System.Drawing.Point(0, 0);
-            this.layout.Name = "layout";
-            this.layout.Size = new System.Drawing.Size(915, 220);
-            this.layout.TabIndex = 0;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(243, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "episode";
             // 
-            // SearchListLayout
+            // EpisodeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.layout);
-            this.Name = "SearchListLayout";
-            this.Size = new System.Drawing.Size(855, 220);
+            this.Controls.Add(this.label1);
+            this.Name = "EpisodeList";
+            this.Size = new System.Drawing.Size(856, 100);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        public System.Windows.Forms.FlowLayoutPanel layout;
-
-
-
-
-
-
+        private System.Windows.Forms.Label label1;
     }
 }

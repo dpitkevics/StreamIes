@@ -34,7 +34,7 @@
   <ItemGroup>
     <Reference Include="SeriesSearcher, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\SeriesSearcher\SeriesSearcher\bin\Debug\SeriesSearcher.dll</HintPath>
+      <HintPath>..\..\StreamIes.SeriesSearcher\SeriesSearcher\bin\Debug\SeriesSearcher.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EpisodeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EpisodeList.Designer.cs">
+      <DependentUpon>EpisodeList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,21 @@
     <Compile Include="SearchListLayout.Designer.cs">
       <DependentUpon>SearchListLayout.cs</DependentUpon>
     </Compile>
+    <Compile Include="SeasonList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SeasonList.Designer.cs">
+      <DependentUpon>SeasonList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SeasonListLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SeasonListLayout.Designer.cs">
+      <DependentUpon>SeasonListLayout.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="EpisodeList.resx">
+      <DependentUpon>EpisodeList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,6 +116,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SearchListLayout.resx">
       <DependentUpon>SearchListLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeasonList.resx">
+      <DependentUpon>SeasonList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeasonListLayout.resx">
+      <DependentUpon>SeasonListLayout.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

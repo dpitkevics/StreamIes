@@ -77,10 +77,12 @@
             this.searchQueryPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
             this.searchQueryPanel.Controls.Add(this.searchQueryBox);
             this.searchQueryPanel.Controls.Add(this.searchButton);
+            this.searchQueryPanel.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.searchQueryPanel.Location = new System.Drawing.Point(143, 50);
             this.searchQueryPanel.Name = "searchQueryPanel";
             this.searchQueryPanel.Size = new System.Drawing.Size(751, 44);
             this.searchQueryPanel.TabIndex = 6;
+            this.searchQueryPanel.Click += new System.EventHandler(this.searchQueryPanel_Click);
             this.searchQueryPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.searchQueryPanel_Paint);
             // 
             // searchButton
@@ -127,10 +129,11 @@
             // 
             // contentPanel
             // 
+            this.contentPanel.AutoScroll = true;
             this.contentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(19)))), ((int)(((byte)(20)))));
             this.contentPanel.Location = new System.Drawing.Point(181, 154);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(915, 657);
+            this.contentPanel.Size = new System.Drawing.Size(880, 657);
             this.contentPanel.TabIndex = 5;
             this.contentPanel.Visible = false;
             // 

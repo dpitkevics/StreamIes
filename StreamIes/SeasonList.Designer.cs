@@ -1,6 +1,6 @@
 ﻿namespace StreamIes
 {
-    partial class SearchListLayout
+    partial class SeasonList
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,35 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.layout = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.seasonLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // layout
+            // label1
             // 
-            this.layout.Location = new System.Drawing.Point(0, 0);
-            this.layout.Name = "layout";
-            this.layout.Size = new System.Drawing.Size(915, 220);
-            this.layout.TabIndex = 0;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(219, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Season";
             // 
-            // SearchListLayout
+            // seasonLayout
+            // 
+            this.seasonLayout.Location = new System.Drawing.Point(0, 34);
+            this.seasonLayout.Name = "seasonLayout";
+            this.seasonLayout.Size = new System.Drawing.Size(856, 166);
+            this.seasonLayout.TabIndex = 1;
+            // 
+            // SeasonList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.layout);
-            this.Name = "SearchListLayout";
-            this.Size = new System.Drawing.Size(855, 220);
+            this.Controls.Add(this.seasonLayout);
+            this.Controls.Add(this.label1);
+            this.Name = "SeasonList";
+            this.Size = new System.Drawing.Size(856, 200);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        public System.Windows.Forms.FlowLayoutPanel layout;
-
-
-
-
-
-
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.FlowLayoutPanel seasonLayout;
     }
 }

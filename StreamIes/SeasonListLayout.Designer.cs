@@ -1,6 +1,6 @@
 ﻿namespace StreamIes
 {
-    partial class SearchListLayout
+    partial class SeasonListLayout
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,35 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.layout = new System.Windows.Forms.FlowLayoutPanel();
+            this.seasonMainLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // layout
+            // seasonMainLayout
             // 
-            this.layout.Location = new System.Drawing.Point(0, 0);
-            this.layout.Name = "layout";
-            this.layout.Size = new System.Drawing.Size(915, 220);
-            this.layout.TabIndex = 0;
+            this.seasonMainLayout.Location = new System.Drawing.Point(0, 0);
+            this.seasonMainLayout.Name = "seasonMainLayout";
+            this.seasonMainLayout.Size = new System.Drawing.Size(856, 200);
+            this.seasonMainLayout.TabIndex = 0;
             // 
-            // SearchListLayout
+            // SeasonListLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.layout);
-            this.Name = "SearchListLayout";
-            this.Size = new System.Drawing.Size(855, 220);
+            this.Controls.Add(this.seasonMainLayout);
+            this.Name = "SeasonListLayout";
+            this.Size = new System.Drawing.Size(856, 200);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        public System.Windows.Forms.FlowLayoutPanel layout;
-
-
-
-
-
+        public System.Windows.Forms.FlowLayoutPanel seasonMainLayout;
 
     }
 }
