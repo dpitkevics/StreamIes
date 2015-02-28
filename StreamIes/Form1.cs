@@ -217,7 +217,7 @@ namespace StreamIes
 
                     foreach (Episode episode in season.episodes)
                     {
-                        EpisodeList episodeList = new EpisodeList(episode);
+                        EpisodeList episodeList = new EpisodeList(episode, this.episodeClickCallback);
 
                         seasonList.seasonLayout.Controls.Add(episodeList);
                     }
@@ -233,6 +233,13 @@ namespace StreamIes
 
                 this.Controls.Remove(this.loader);
             }
+
+            return 1;
+        }
+
+        private int episodeClickCallback(Episode episode)
+        {
+            Console.WriteLine(episode.title);
 
             return 1;
         }

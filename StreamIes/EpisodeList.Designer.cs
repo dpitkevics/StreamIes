@@ -42,6 +42,7 @@
             this.episodeTitle.Size = new System.Drawing.Size(96, 19);
             this.episodeTitle.TabIndex = 0;
             this.episodeTitle.Text = "Episode Title";
+            this.episodeTitle.Click += new System.EventHandler(this.episode_Click);
             this.episodeTitle.MouseEnter += new System.EventHandler(this.episde_Enter);
             this.episodeTitle.MouseLeave += new System.EventHandler(this.episode_Leave);
             // 
@@ -53,6 +54,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "EpisodeList";
             this.Size = new System.Drawing.Size(856, 41);
+            this.Click += new System.EventHandler(this.episode_Click);
             this.MouseEnter += new System.EventHandler(this.episde_Enter);
             this.MouseLeave += new System.EventHandler(this.episode_Leave);
             this.ResumeLayout(false);

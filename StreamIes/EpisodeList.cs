@@ -14,10 +14,12 @@ namespace StreamIes
     public partial class EpisodeList : UserControl
     {
         private Episode episode;
+        private Func<Episode, int> callback;
 
-        public EpisodeList(Episode episode)
+        public EpisodeList(Episode episode, Func<Episode, int> callback)
         {
             this.episode = episode;
+            this.callback = callback;
 
             InitializeComponent();
 
@@ -48,6 +50,11 @@ namespace StreamIes
         private void episode_Leave(object sender, EventArgs e)
         {
             this.BackColor = Color.Transparent;
+        }
+
+        private void episode_Click(object sender, EventArgs e)
+        {
+            this.callback(this.episode);
         }
     }
 }
