@@ -27,7 +27,15 @@ namespace StreamIes
 
         public void InitDynamicComponenets()
         {
-            this.logo.Load(this.show.imageUrl);
+            try
+            {
+                this.logo.Load(this.show.imageUrl);
+            }
+            catch (InvalidOperationException exception)
+            {
+                this.logo.Load("http://thetasa.org/wp-content/uploads/2014/05/thumbnail-default.jpg");
+            }
+
             this.titleLabel.Text = this.show.name;
             this.seasonsLabel.Text = String.Format("Seasons: {0}", this.show.seasons);
 
