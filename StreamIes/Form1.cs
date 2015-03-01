@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using StreamIes.SeriesSearcher;
+using StreamIes.TorrentDownloader;
 
 namespace StreamIes
 {
@@ -239,7 +240,21 @@ namespace StreamIes
 
         private int episodeClickCallback(Episode episode)
         {
-            Console.WriteLine(episode.title);
+            TorrentSearcher torrentSearcher = new TorrentSearcher();
+
+            String seasonNumber;
+            if (episode.season.number < 10)
+            {
+                seasonNumber = "0" + episode.season.number;
+            }
+            else
+            {
+                seasonNumber = Convert.ToString(episode.season.number);
+            }
+
+            String searchQuery = String.Format("{0} S{1}E{2}", episode.show.name, seasonNumber, episode.episodeNumberInSeason);
+
+            torrentSearcher.MakeSearchAndDownload(searchQuery);
 
             return 1;
         }
